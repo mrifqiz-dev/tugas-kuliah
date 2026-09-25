@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Tugas - P6_069</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Daftar Tugas - P3_069</h1>
+    <!-- Form untuk menambah tugas -->
+     <input type="text" id="inputTugas" placeholder="Masukkan tugas">
+     <button onclick="tambahTugas()">Tambah Tugas</button>
+
+     <!-- Tombol untuk menampilkan daftar tugas -->
+      <button onclick="tampilkanTugas()">Tampilkan Daftar Tugas</button>
+
+        <!-- Daftar Tugas -->
+         <ul id="listTugas" style="display: none;"></ul>
+
+<script>
+    let daftarTugas = [];
+
+    function tambahTugas() {
+        const input = document.getElementById('inputTugas');
+        const tugas = input.value.trim();
+
+        if (tugas) {
+            daftarTugas.push({ text: tugas, completed: false }); // simpan sebagai objek
+            input.value = '';
+            alert(`Tugas "${tugas}" berhasil ditambahkan.`);
+        } else {
+            alert('Masukkan tugas yang valid.');
+        }
+    }
+
+    function tampilkanTugas() {
+        const list = document.getElementById('listTugas');
+        list.innerHTML = '';
+
+        if (daftarTugas.length === 0) {
+            list.innerHTML = '<li>Tidak ada tugas.</li>';
+        } else {
+            daftarTugas.forEach((tugas, index) => {
+                const li = document.createElement('li');
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = tugas.completed;
+                checkbox.onchange = () => tandaiSelesai(index);
+
+                const span = document.createElement('span');
+                span.textContent = tugas.text;
+                if (tugas.completed) {
+                    span.classList.add('completed');
+                }
+
+                const btnHapus = document.createElement('button');
+                btnHapus.textContent = 'Hapus';
+                btnHapus.onclick = () => hapusTugas(index);
+
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(btnHapus);
+
+                list.appendChild(li);
+            });
+        }
+
+        list.style.display = 'block';
+    }
+
+    function tandaiSelesai(index) {
+        daftarTugas[index].completed = !daftarTugas[index].completed;
+        tampilkanTugas();
+    }
+
+    function hapusTugas(index) {
+        const tugasTerhapus = daftarTugas.splice(index, 1);
+        alert(`Tugas "${tugasTerhapus[0].text}" berhasil dihapus.`);
+        tampilkanTugas();
+    }
+</script>
+
+</body>
+</html>
