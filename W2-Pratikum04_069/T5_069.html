@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tombol Pengubah Warna - T5_XXX</title>
+</head>
+<body>
+    <h1>Tombol Pengubah Warna Latar Belakang</h1>
+
+    <!-- Tombol -->
+    <button onclick="ubahWarna()">Ubah Warna</button>
+
+    <!-- Tempat menampilkan kode warna -->
+    <p>Warna saat ini: <span id="kodeWarna">#FFFFFF</span></p>
+
+    <script>
+        // Fungsi untuk membuat warna acak
+        function warnaAcak() {
+            return '#' + Math.floor(Math.random() * 16777215).toString(16);
+        }
+
+        // Fungsi untuk mengubah warna latar belakang
+        function ubahWarna() {
+            const warnaBaru = warnaAcak(); // ambil warna acak
+            document.body.style.backgroundColor = warnaBaru; // ubah latar belakang
+            document.getElementById('kodeWarna').textContent = warnaBaru; // tampilkan kode warna
+        }
+    </script>
+</body>
+</html>
