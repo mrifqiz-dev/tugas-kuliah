@@ -1,0 +1,88 @@
+**Catatan Kilat Bootstrap 5**
+
+Bootstrap adalah framework CSS yang menyediakan kelas siap pakai untuk mengatur layout dan tampilan. Di halamanmu, Bootstrap CSS sudah dimuat, jadi kelas-kelasnya bisa langsung digunakan di HTML.
+
+**1. Grid: susun kolom**
+
+Pola umumnya:
+
+```html
+<div class="container">
+  <div class="row">
+    <div class="col">Konten</div>
+  </div>
+</div>
+```
+
+- `container`: membungkus konten dan mengatur lebar halaman.
+- `row`: membuat baris untuk kolom.
+- `col`: membuat kolom.
+- Grid Bootstrap terdiri dari **12 bagian**. `col-6` berarti setengah lebar; `col-4` berarti sepertiga lebar.
+
+Contoh responsif:
+
+```html
+<div class="col-12 col-md-6 col-lg-4">Kartu</div>
+```
+
+Artinya:
+- HP: satu kartu per baris (`12/12`).
+- Mulai `md`: dua kartu per baris (`6/12`).
+- Mulai `lg`: tiga kartu per baris (`4/12`).
+
+**2. Breakpoint: kapan layout berubah?**
+
+| Kelas | Mulai berlaku |
+|---|---:|
+| `sm` | 576 px |
+| `md` | 768 px |
+| `lg` | 992 px |
+| `xl` | 1200 px |
+| `xxl` | 1400 px |
+
+Breakpoint berlaku dari ukuran itu dan seterusnya. Jadi, `col-lg-6` mengatur kolom mulai `lg`; di bawahnya kolom biasanya menumpuk, kecuali ada kelas lain seperti `col-md-6`.
+
+**3. Urutan elemen**
+
+Kelas `order` mengatur urutan tampil:
+
+```html
+<div class="order-2 order-lg-1">Teks</div>
+<div class="order-1 order-lg-2">Foto</div>
+```
+
+Di layar kecil, foto muncul dulu. Mulai `lg`, urutannya berubah sehingga teks muncul dulu.
+
+**4. Jarak**
+
+- `m-*`: margin, yaitu jarak di luar elemen.
+- `p-*`: padding, yaitu jarak di dalam elemen.
+- `g-*`: jarak horizontal dan vertikal antarkolom.
+- `gx-*`: jarak horizontal.
+- `gy-*`: jarak vertikal.
+- `mb-*`: margin bawah.
+
+Contoh: `row g-3` memberi jarak pada kolom-kolom di dalam baris itu. Angka lebih besar umumnya berarti jarak lebih besar.
+
+**5. Utility class yang sering dipakai**
+
+- `text-center`: teks rata tengah.
+- `d-flex`: aktifkan Flexbox.
+- `justify-content-center`: ratakan isi ke tengah secara horizontal.
+- `justify-content-between`: beri jarak maksimal di antara isi.
+- `align-items-center`: ratakan isi ke tengah secara vertikal.
+- `img-fluid`: gambar menyesuaikan lebar wadahnya.
+
+**6. Form dan tombol**
+
+```html
+<input class="form-control">
+<select class="form-select"></select>
+<button class="btn btn-primary">Kirim</button>
+```
+
+- `form-control`: input teks dan textarea.
+- `form-select`: dropdown pilihan.
+- Tombol Bootstrap biasanya memakai `btn` **ditambah** kelas variasi, misalnya `btn-primary`, `btn-success`, atau `btn-danger`.
+
+**Ingat saat ujian:** kelas Bootstrap hanya bekerja kalau Bootstrap CSS sudah dimuat. Beberapa kelas di halamanmu, seperti `hero-content` atau `portfolio-card`, adalah kelas khusus dari template, bukan kelas Bootstrap. Kalau perubahan kelas Bootstrap tidak terlihat, CSS template mungkin sedang mengatur elemen yang sama.

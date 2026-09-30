@@ -152,7 +152,7 @@
         async function editProduct(id) {
             try {
                 // Dapatkan data produk yang akan diedit menggunakan detailUrl
-                const detailUrl = `http://api.melangkah.my.id/produk/detail.php?id=${id}`;
+                const detailUrl = `https://api.melangkah.my.id/produk/detail.php?id=${id}`;
                 let response = await fetch(detailUrl);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); 
 
