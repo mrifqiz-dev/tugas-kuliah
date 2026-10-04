@@ -1,0 +1,14 @@
+TUGAS WEB API — MULAI DI SINI
+
+1. Ekstrak ZIP seluruhnya.
+2. Buka folder ini lewat File > Open Folder di VS Code.
+3. Baca PANDUAN-MULAI-DI-SINI.md. Tekan Ctrl+Shift+V untuk preview.
+4. Pasang Live Server (Ritwick Dey), lalu klik kanan index.html > Open with Live Server.
+5. Impor postman_collection.json ke Postman. Mulai dengan GET Read All Asset.
+
+Menu tugas: CRUD Asset, CRUD Mahasiswa, serta Create/Read Peminjaman.
+Menggunakan API dosen, bukan data simulasi. Perlu internet.
+Tidak perlu XAMPP, database lokal, npm install, atau menjalankan Postman terus-menerus.
+
+File contoh template lain dipertahankan tetapi tidak dipakai oleh menu tugas.
+Panduan lengkap, cara menguji, dan batas verifikasi tersedia di PANDUAN-MULAI-DI-SINI.md.
