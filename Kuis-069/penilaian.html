@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Sistem Informasi Akademik & Penilaian Mahasiswa">
+    <meta name="author" content="SIAKAD Team">
+
+    <title>SIAKAD - Transaksi Penilaian Mahasiswa</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Custom styles for DataTables -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <style>
+        .grade-badge-lg {
+            font-size: 1.1rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">RENTAL PS <sub>ADMIN</sub></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Master Data
+            </div>
+
+            <!-- Nav Item - Master Data Prodi -->
+            <li class="nav-item">
+                <a class="nav-link" href="prodi.html">
+                    <i class="fas fa-fw fa-university"></i>
+                    <span>Master Unit PS</span></a>
+            </li>
+            <!-- Nav Item - Transaksi Penilaian -->
+            <li class="nav-item active">
+                <a class="nav-link" href="penilaian.html">
+                    <i class="fas fa-fw fa-calculator"></i>
+                    <span>Transaksi Penilaian</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <h1 class="h5 mb-0 text-gray-800 font-weight-bold">Manajemen Transaksi Penyewaan PS</h1>
+                    
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h6>
+                            Pencatatan dan riwayat transaksi sewa unit PlayStation.
+                        </h6>
+                        <button class="btn btn-success shadow-sm font-weight-bold" data-toggle="modal" data-target="#penilaianModal">
+                            <i class="fas fa-plus-circle fa-sm mr-1"></i> Sewa PS Baru
+                        </button>
+                    </div>
+
+                    <!-- Data Table Card -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">Daftar Riwayat Transaksi Penyewaan</h6>
+                            <button class="btn btn-info btn-sm" onclick="location.reload()">
+                                <i class="fas fa-sync-alt fa-sm mr-1"></i> Refresh Data
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped align-items-center" id="dataTable" width="100%" cellspacing="0">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>ID Tx</th>
+                                            <th>Nama Penyewa</th>
+                                            <th>Unit PS</th>
+                                            <th class="text-center">Tipe</th>
+                                            <th class="text-center">Durasi</th>
+                                            <th class="text-center">Total  Bayar</th>
+                                            <th class="text-center">Waktu Sewa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#TX-3</td>
+                                            <td class="font-weight-bold text-dark">Indra </td>
+                                            <td class="text-left font-weight-bold text-primary">PS5 Room VIP 1</td>
+                                            <td class="text-center"><span class="badge badge-success p-2">PS5</span></td>
+                                            <td class="text-center">1 Jam</td>
+                                            <td class="text-center text-primary font-weight-bold text-success">RP 20.000</td>
+                                            <td class="text-center">2026-10-06 19:54:26</td>
+                                        </tr>
+                                        <tr>
+                                            <td>#TX-2</td>
+                                            <td class="font-weight-bold text-dark">Andi Wijaya </td>
+                                            <td class="text-left font-weight-bold text-primary">PS4 - Room Reguler 1</td>
+                                            <td class="text-center"><span class="badge badge-success p-2">PS4</span></td>
+                                            <td class="text-center">3 Jam</td>
+                                            <td class="text-center text-primary font-weight-bold text-success">RP 36.000</td>
+                                            <td class="text-center">2026-10-06 19:25:36</td>
+                                        </tr>
+                                        <tr>
+                                           <td>#TX-1</td>
+                                            <td class="font-weight-bold text-dark">Budi Santoso </td>
+                                            <td class="text-left font-weight-bold text-primary">PS5 Room VIP 1</td>
+                                            <td class="text-center"><span class="badge badge-success p-2">PS5</span></td>
+                                            <td class="text-center">2 Jam</td>
+                                            <td class="text-center text-primary font-weight-bold text-success">RP 40.000</td>
+                                            <td class="text-center">2026-10-06 19:25:36</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>SIAKAD &copy; Transaksi Penilaian Mahasiswa 2026</span>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- MODAL INPUT / EDIT PENILAIAN -->
+    <div class="modal fade" id="penilaianModal" tabindex="-1" role="dialog" aria-labelledby="penilaianModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="penilaianModalLabel">Buat Transaksi Sewa PS</h5>
+                    <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form onsubmit="event.preventDefault(); alert('Transaksi Penilaian berhasil disimpan!'); $('#penilaianModal').modal('hide');">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label class="font-weight-bold text-dark">Pilih Mahasiswa</label>
+                                <select class="form-control" required>
+                                    <option value="">-- Pilih Unit PS --</option>
+                                    <option value="230101001">PS5</option>
+                                    <option value="230101002">PS4</option>
+                                    <option value="230102001">PS3</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label class="font-weight-bold text-dark">Nama Penyewa</label>
+                                <input type="text" class="form-control" placeholder="Contoh: Ahmad Rizki" required>
+                            </div>
+                        </div>
+                            <div class="col-md-12 form-group">
+                                <label class="font-weight-bold text-dark">Durasi Sewa (Jam)</label>
+                                <input type="number" class="form-control" placeholder=" 1" min="1" max="24" required>
+                            </div>
+                        <hr>
+
+                        <!-- Live Calc Display -->
+                        <div class="row align-items-center bg-light p-3 rounded mx-1">
+                            <div class="col-md-12 text-left">
+                                <div class="small text-muted font-weight-bold">ESTIMASI TOTAL HARGA:</div>
+                                <div class="h3 font-weight-bold text-primary mb-0" id="previewNilaiAkhir">80.0</div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary font-weight-bold" type="submit"><i class="fas fa-save mr-1"></i> Proses Sewa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DETAIL / TRANSKRIP SLIP -->
+    <div class="modal fade" id="transkripModal" tabindex="-1" role="dialog" aria-labelledby="transkripModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title font-weight-bold" id="transkripModalLabel"><i class="fas fa-file-invoice mr-2"></i>Slip Hasil Penilaian Mahasiswa</h5>
+                    <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4" id="transkripContent">
+                    <!-- Dynamic Content -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Tutup</button>
+                    <button class="btn btn-primary" onclick="window.print()"><i class="fas fa-print mr-1"></i> Cetak Slip</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins (DataTables) -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        const url = "https://api.melangkah.my.id/unit/read.php";
+        const createUrl= "https://api.melangkah.my.id/unit/create.php";
+        const table = $('#dataTable').DataTable({
+            "ajax": {
+                "url": url,
+                "dataSrc": "data"
+            },
+            "columns": [
+                { "data": "id_unit" },
+                { "data": "nama_penyewa" },
+                { "data": "durasi_jam" },
+                {
+                    "data": null,
+                    "render": function (data, type, row) {
+                        return `<button class="btn btn-info btn-sm" onclick="showDetail(${row.id_unit})"><i class="fas fa-eye"></i> Detail</button>`;
+                    }
+                }
+            ]
+        });
+
+        async function createData() {
+            const formData = {
+                nama_unit: document.querySelector('#nama_unit').value,
+                tipe_ps: document.querySelector('#tipe_ps').value,
+                harga_per_jam: parseFloat(document.querySelector('#harga_per_jam').value),
+                status: document.querySelector('#status').value
+            };
+
+            try {
+                const response = await fetch(createUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                const result = await response.json();
+                if (result.success) {
+                    alert('Data berhasil ditambahkan!');
+                    $('#penilaianModal').modal('hide');
+                    table.ajax.reload();
+                } else {
+                    alert('Gagal menambahkan data: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat menambahkan data.');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Sistem Informasi Akademik & Penilaian Mahasiswa">
+    <meta name="author" content="SIAKAD Team">
+
+    <title>SIAKAD - Master Data Program Studi</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Custom styles for DataTables -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">RENTAL PS <sub>ADMIN</sub></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Master Data
+            </div>
+
+            <!-- Nav Item - Master Data Prodi -->
+            <li class="nav-item active">
+                <a class="nav-link" href="prodi.html">
+                    <i class="fas fa-fw fa-university"></i>
+                    <span>Master Unit PS</span></a>
+            </li>
+
+            <!-- Nav Item - Transaksi Penilaian -->
+            <li class="nav-item">
+                <a class="nav-link" href="penilaian.html">
+                    <i class="fas fa-fw fa-calculator"></i>
+                    <span>Transaksi Penilaian</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <h1 class="h5 mb-0 text-gray-800 font-weight-bold">Manajemen Master Unit Playstation</h1>
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <p>
+                            Kelola daftar unit console PlayStation, tarif sewa per jam dan status  ketersediaan.
+                        </p>
+                        <button class="btn btn-success shadow-sm font-weight-bold" data-toggle="modal" data-target="#prodiModal">
+                            <i class="fas fa-plus-circle fa-sm mr-1"></i> Tambah Unit
+                        </button>
+                    </div>
+
+                    <!-- Data Table Card -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">Daftar Riwayat Transaksi Penyewaan</h6>
+                            <button class="btn btn-info btn-sm" onclick="location.reload()">
+                                <i class="fas fa-sync-alt fa-sm mr-1"></i> Refresh Data
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama Unit</th>
+                                            <th>Tipe Console</th>
+                                            <th>Harga / Jam</th>
+                                            <th>Status</th>
+                                            <th class="text-center" style="width: 110px;">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Data akan diisi oleh DataTables melalui AJAX -->
+                                    </tbody>
+                                </table>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>SIAKAD &copy; Master Data Program Studi 2026</span>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- MODAL TAMBAH / EDIT PRODI -->
+    <div class="modal fade" id="prodiModal" tabindex="-1" role="dialog" aria-labelledby="prodiModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title font-weight-bold" id="prodiModalLabel">Form Program Studi</h5>
+                    <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="prodiForm" onsubmit="event.preventDefault(); createData({ nama_unit: this.nama_unit.value, tipe_ps: this.tipe_ps.value, harga_per_jam: this.harga_per_jam.value, status_transaksi: this.status_transaksi.value });">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label class="font-weight-bold text-dark">Nama Unit</label>
+                                <input type="text" class="form-control" placeholder="Contoh: PR001" required>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label class="font-weight-bold text-dark">Tipe Console</label>
+                                <select class="form-control" required>
+                                    <option value="">Pilih Tipe Console</option>
+                                    <option value="PlayStation 4">PlayStation 5 (PS5)</option>
+                                    <option value="PlayStation 5">PlayStation 4 (PS4)</option>
+                                    <option value="PlayStation 3">PlayStation 3 (PS3)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label class="font-weight-bold text-dark">Harga Sewa / Jam (Rp)</label>
+                                <input type="number" class="form-control" placeholder="Contoh: 15000" required>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label class="font-weight-bold text-dark">Status</label>
+                                <select class="form-control" required>
+                                    <option value="Baik Sekali">Tersedia</option>
+                                    <option value="Baik">Disewa</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary font-weight-bold" type="submit"><i class="fas fa-save mr-1"></i> Simpan Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins (DataTables) -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+       const url = "https://api.melangkah.my.id/transaksi_sewa/read.php";
+        const createUrl= "https://api.melangkah.my.id/transaksi_sewa/create.php";
+        const updateUrl= "https://api.melangkah.my.id/transaksi_sewa/update.php";
+        const deleteUrl= "https://api.melangkah.my.id/transaksi_sewa/delete.php";
+        const table = $('#dataTable').DataTable({
+            "ajax": {
+                "url": url,
+                "dataSrc": "data"
+            },
+            "columns": [
+                { "data": "id_unit" },
+                { "data": "nama_unit" },
+                { "data": "tipe_ps" },
+                { "data": "harga_per_jam" },
+                { "data": "status_transaksi" },
+                {
+                    "data": null,
+                    "render": function (data, type, row) {
+                        return `
+                            <button class="btn btn-sm btn-info mr-1" data-toggle="modal"
+                                data-target="#prodiModal" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteData(${row.id_unit})" title="Hapus"><i class="fas fa-trash-alt"></i></button>
+                        `;
+                    }
+                }
+            ]
+        }); 
+       async function createData(data) {
+            try {
+                const response = await fetch(createUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    $('#prodiModal').modal('hide');
+                    table.ajax.reload();
+                } else {
+                    alert('Gagal menambahkan data: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function deleteData(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                try {
+                    const response = await fetch(deleteUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id_unit: id })
+                    });
+                    const result = await response.json();
+                    if (result.status === 'success') {
+                        table.ajax.reload();
+                    } else {
+                        alert('Gagal menghapus data: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+        }
+
+        
+        
+    </script>
+
+</body>
+
+</html>
