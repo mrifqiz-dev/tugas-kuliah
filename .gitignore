@@ -1,0 +1,5 @@
+# Generated deployment output; Vercel rebuilds it from source on every deployment.
+/dist/
+/node_modules/
+/.vercel/
+*.log

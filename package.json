@@ -1,0 +1,14 @@
+{
+  "name": "tugas-kuliah",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "install:apps": "node scripts/build.mjs --install-only",
+    "build": "node scripts/build.mjs",
+    "test:deployment": "node scripts/check-deployment.mjs",
+    "preview": "node scripts/check-deployment.mjs --serve"
+  }
+}
