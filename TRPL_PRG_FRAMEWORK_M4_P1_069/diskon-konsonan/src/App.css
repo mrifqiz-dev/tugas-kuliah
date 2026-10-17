@@ -1,0 +1,125 @@
+
+/* Layout halaman */
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px 20px;
+  background: #f1f5f9;
+}
+
+/* Kotak utama */
+.card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Judul aplikasi */
+.card h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e293b;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0 0 30px;
+}
+
+/* Pengaturan form */
+.card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Kelompok label dan input */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  text-align: left;
+}
+
+/* Input */
+.field input {
+  width: 100%;
+  padding: 13px 15px;
+  font-size: 15px;
+  color: #1e293b;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.field input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+/* Tombol */
+.card button {
+  width: 100%;
+  padding: 14px;
+  background: #4f46e5;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card button:hover {
+  background: #4338ca;
+}
+
+/* Kotak hasil diskon */
+.hasil {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.hasil h2 {
+  font-size: 19px;
+  color: #1e293b;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.hasil p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.8;
+  margin: 10px 0;
+}
+
+.hasil strong {
+  color: #1e293b;
+}
+
+/* Responsive untuk HP */
+@media (max-width: 600px) {
+  .card {
+    padding: 25px 20px;
+  }
+
+  .card h1 {
+    font-size: 22px;
+  }
+}

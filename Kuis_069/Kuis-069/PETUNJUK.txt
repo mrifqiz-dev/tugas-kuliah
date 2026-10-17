@@ -1,0 +1,38 @@
+SIAKAD — MODIFIKASI SB ADMIN 2
+
+CARA MEMBUKA
+1. Ekstrak seluruh ZIP terlebih dahulu.
+2. Buka folder startbootstrap-sb-admin-2-gh-pages.
+3. Klik dua kali index.html untuk membuka dashboard.
+   Alternatif: buka folder di VS Code dan gunakan Live Server.
+Tidak perlu database, XAMPP, PHP, npm install, atau proses build.
+Koneksi internet hanya diperlukan untuk font Nunito dari Google Fonts,
+seperti website referensi. Bootstrap, jQuery, ikon, grafik, dan tabel
+sudah tersedia di folder vendor/css/js lokal.
+
+HALAMAN UTAMA
+- index.html: dashboard akademik, ringkasan, grafik grade, grafik prodi.
+- prodi.html: master program studi dan modal formulir.
+- mahasiswa.html: master mahasiswa dan modal formulir.
+- penilaian.html: transaksi, perhitungan nilai otomatis, slip penilaian.
+
+PERILAKU SESUAI REFERENSI
+- Pencarian, pengurutan, dan pagination tabel memakai DataTables.
+- Tombol tambah/edit membuka modal formulir.
+- Tombol simpan/hapus menampilkan pesan simulasi, tidak mengubah data.
+- Nilai akhir = tugas 30% + UTS 30% + UAS 40%.
+- Grade: A >=85; B+ >=75; B >=65; C >=55; D >=45; E <45.
+- Status lulus mulai nilai 55.
+- Ikon cetak menampilkan slip, tombol Cetak Slip membuka dialog cetak.
+- Login/logout hanya navigasi halaman contoh, bukan autentikasi.
+- Data contoh dan angka dashboard dipertahankan seperti referensi;
+  angka dashboard bukan rekap dinamis dari tabel.
+
+FILE YANG DIMODIFIKASI / DITAMBAHKAN
+index.html, prodi.html, mahasiswa.html, penilaian.html, PETUNJUK.txt.
+File bawaan template lain dipertahankan, termasuk LICENSE dan README.md.
+
+ACUAN
+https://tugas-bootstrap-beryl.vercel.app/
+Tampilan dan markup empat halaman disesuaikan dengan halaman publik acuan.
+Template dasar: Start Bootstrap SB Admin 2 (Bootstrap 4), lisensi MIT.
