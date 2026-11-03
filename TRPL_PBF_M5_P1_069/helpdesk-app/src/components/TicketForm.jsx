@@ -278,7 +278,7 @@ function TicketForm() {
     return (
         <div className="row g-4">
             {/* FORM */}
-            <div className="col-lg-7">
+            <div className="col-lg-12">
                 <div className="card shadow-sm">
                     <div className="card-header bg-primary text-white">
                         <h5 className="mb-0">Create Service Request</h5>

@@ -92,6 +92,13 @@ if (preview) {
       console.log(`PASS /${link}`)
     }
     const framework = await check(frameworkPath)
+    const helpdeskPath = '/TRPL_PBF_M5_P1_069/helpdesk-app/dist/index.html'
+    assert.ok(links(main).includes(helpdeskPath.slice(1)), 'Missing Helpdesk navigation')
+    const helpdesk = await check(helpdeskPath)
+    assert.match(helpdesk, /type="module"[^>]*src="\.\/assets\/[^" ]+\.js"/)
+    await checkFiles(join(output, 'TRPL_PBF_M5_P1_069/helpdesk-app/dist'),
+      '/TRPL_PBF_M5_P1_069/helpdesk-app/dist')
+    console.log(`PASS ${helpdeskPath} + built assets`)
     const appLinks = links(framework)
     assert.equal(appLinks.length, 5, 'Expected five React application links')
     for (const link of appLinks) {

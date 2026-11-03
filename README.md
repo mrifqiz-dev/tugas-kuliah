@@ -1,5 +1,19 @@
 # Tugas Kuliah — satu deployment Vercel
 
+## Membuka aplikasi M5 (Helpdesk)
+
+Link M5 pada `index.html` menuju
+`TRPL_PBF_M5_P1_069/helpdesk-app/dist/index.html`.
+Jalankan `npm run build` dari root repository, lalu `npm run preview` dan buka
+<http://127.0.0.1:4173/index.html>. Klik **M5_P1_069** untuk membuka aplikasi.
+Gunakan alamat HTTP preview; membuka file React langsung lewat `file://`
+tidak menjalankan aplikasi dengan benar.
+
+Aplikasi Helpdesk ikut dalam `npm run install:apps` dan `npm run build`,
+sehingga hasil build-nya juga masuk ke output deployment Vercel.
+Untuk pengembangan M5 saja, jalankan `npm run dev` dari folder
+`TRPL_PBF_M5_P1_069/helpdesk-app` dan buka alamat yang ditampilkan Vite.
+
 Semua tugas HTML dan lima aplikasi React disajikan melalui satu situs. Navigasi
 tetap memakai `<a href="...">` pada `index.html` utama dan daftar Framework.
 

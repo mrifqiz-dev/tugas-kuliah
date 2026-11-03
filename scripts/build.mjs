@@ -11,7 +11,8 @@ const apps = [
   'name-formatter',
   'diskon-konsonan',
   'diskon-palindrom',
-]
+].map((app) => join(framework, app))
+apps.push(join('TRPL_PBF_M5_P1_069', 'helpdesk-app'))
 
 // npm supplies its CLI path on both Windows and Linux; no shell quoting needed.
 function npm(args, cwd) {
@@ -27,13 +28,13 @@ function npm(args, cwd) {
 if (process.argv.includes('--install-only')) {
   for (const app of apps) {
     console.log(`\nInstalling ${app}`)
-    npm(['ci', '--include=dev', '--no-audit', '--no-fund'], join(root, framework, app))
+    npm(['ci', '--include=dev', '--no-audit', '--no-fund'], join(root, app))
   }
 } else {
   // Build first: a failed application must fail the deployment.
   for (const app of apps) {
     console.log(`\nBuilding ${app}`)
-    npm(['run', 'build'], join(root, framework, app))
+    npm(['run', 'build'], join(root, app))
   }
 
   const output = resolve(root, 'dist')
@@ -70,12 +71,12 @@ if (process.argv.includes('--install-only')) {
   }
   await cp(join(root, framework, 'index.html'), join(output, framework, 'index.html'))
   for (const app of apps) {
-    const source = join(root, framework, app, 'dist')
+    const source = join(root, app, 'dist')
     const entries = await readdir(source)
     if (!entries.includes('index.html') || !entries.includes('assets')) {
       throw new Error(`Incomplete build: ${app}`)
     }
-    await cp(source, join(output, framework, app, 'dist'), { recursive: true })
+    await cp(source, join(output, app, 'dist'), { recursive: true })
   }
   console.log('\nDeployment output ready: dist/')
 }
