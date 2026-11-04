@@ -38,7 +38,7 @@ function TicketForm() {
     // MENGAMBIL DATA KATEGORI
     // ===================================
     useEffect(() => {
-        fetch('/categories.json')
+        fetch(`${import.meta.env.BASE_URL}categories.json`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Gagal mengambil data kategori');
