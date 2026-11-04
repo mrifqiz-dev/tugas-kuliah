@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { useTicket } from '../context/TicketContext';
 
 function TicketList() {
-    const { tickets, updateTicketStatus, clearTickets } = useTicket();
+    const { tickets, updateTicketStatus, clearTickets, deleteTicket } = useTicket();
 
     const [search, setSearch] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('');
+    const [priorityFilter, setPriorityFilter] = useState('');
     const [statusFilter, setStatusFilter] = useState('');
 
     const categories = [
@@ -15,22 +16,27 @@ function TicketList() {
 
     // FILTER TICKET
     const filteredTickets = tickets.filter((ticket) => {
-        const matchSearch = ticket.title
-            .toLowerCase()
-            .includes(search.toLowerCase());
+        const matchSearch =
+            ticket.title.toLowerCase().includes(search.toLowerCase()) ||
+            ticket.name.toLowerCase().includes(search.toLowerCase());
 
         const matchCategory =
             categoryFilter === '' || ticket.category === categoryFilter;
 
+        const matchPriority =
+            priorityFilter === '' || ticket.priority === priorityFilter;
+
         const matchStatus =
             statusFilter === '' || ticket.status === statusFilter;
 
-        return matchSearch && matchCategory && matchStatus;
+        return matchSearch && matchCategory && matchPriority && matchStatus;
     });
 
     // BADGE PRIORITAS
     const priorityBadge = (priority) => {
         switch (priority) {
+            case 'Critical':
+                return 'bg-dark text-white';
             case 'High':
                 return 'bg-danger';
             case 'Medium':
@@ -98,6 +104,20 @@ function TicketList() {
                                     {category}
                                 </option>
                             ))}
+                        </select>
+                    </div>
+
+                    <div className="col-md-4">
+                        <select
+                            className="form-select"
+                            value={priorityFilter}
+                            onChange={(event) => setPriorityFilter(event.target.value)}
+                        >
+                            <option value="">Semua Prioritas</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
                         </select>
                     </div>
 
@@ -193,7 +213,9 @@ function TicketList() {
                                                     )
                                                 }
                                             >
+                                                {ticket.status !== 'Resolved' && (
                                                 <option value="Open">Open</option>
+                                                )}
                                                 <option value="In Progress">
                                                     In Progress
                                                 </option>
@@ -201,6 +223,14 @@ function TicketList() {
                                                     Resolved
                                                 </option>
                                             </select>
+
+                                            <button
+                                             type="button"
+                                                className="btn btn-sm btn-danger mt-2"
+                                                onClick={() => deleteTicket(ticket.id)}
+                                            >
+                                                Delete
+                                                </button>
                                         </td>
                                     </tr>
                                 ))}

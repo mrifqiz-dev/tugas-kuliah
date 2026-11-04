@@ -35,9 +35,17 @@
             setTickets([]);
         };
 
+        
+const deleteTicket = (id) => {
+    setTickets((previousTickets) =>
+        previousTickets.filter((ticket) => ticket.id !== id)
+    );
+};
+
+
         return (
             <TicketContext.Provider
-                value={{ tickets, addTicket, updateTicketStatus, clearTickets, }}
+                value={{ tickets, addTicket, updateTicketStatus, clearTickets, deleteTicket, }}
             >
                 {children}
             </TicketContext.Provider>

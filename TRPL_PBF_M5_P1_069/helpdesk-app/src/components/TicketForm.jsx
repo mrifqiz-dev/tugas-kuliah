@@ -17,6 +17,7 @@ function TicketForm() {
         title: '',
         description: '',
         incidentDate: '',
+        lokasiKejadian: '',
     });
 
     const [errors, setErrors] = useState({});
@@ -181,6 +182,10 @@ function TicketForm() {
             }
         }
 
+        if (!formData.lokasiKejadian) {
+            validationErrors.lokasiKejadian = 'Lokasi kejadian harus dipilih.';
+        }
+
         setErrors(validationErrors);
         return validationErrors;
     };
@@ -247,6 +252,7 @@ function TicketForm() {
             title: '',
             description: '',
             incidentDate: '',
+            lokasiKejadian: '',
         });
 
         setErrors({});
@@ -265,6 +271,7 @@ function TicketForm() {
             title: '',
             description: '',
             incidentDate: '',
+            lokasiKejadian: '',
         });
 
         setErrors({});
@@ -383,9 +390,10 @@ function TicketForm() {
                                     className={`form-select ${errors.priority ? 'is-invalid' : ''}`}
                                 >
                                     <option value="">-- Pilih prioritas --</option>
-                                    <option value="Low">Low</option>
-                                    <option value="Medium">Medium</option>
+                                    <option value="Critical">Critical</option>
                                     <option value="High">High</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
                                 </select>
 
                                 {errors.priority && (
@@ -459,6 +467,31 @@ function TicketForm() {
                                 {errors.incidentDate && (
                                     <div className="invalid-feedback">
                                         {errors.incidentDate}
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* LOKASI KEJADIAN */}
+                            <div className="mb-3">
+                                <label className="form-label" htmlFor="lokasiKejadian">
+                                    Lokasi Kejadian
+                                </label>
+                                <select
+                                    id="lokasiKejadian"
+                                    name="lokasiKejadian"
+                                    value={formData.lokasiKejadian}
+                                    onChange={handleChange}
+                                    className={`form-select ${errors.lokasiKejadian ? 'is-invalid' : ''}`}
+                                >
+                                    <option value="">-- Pilih lokasi kejadian --</option>
+                                    <option value="Lab Komputer">Laboratorium</option>
+                                    <option value="Ruang Kelas">Ruang Kelas</option>
+                                    <option value="Perpustakaan">Ruang Dosen</option>
+                                    <option value="Kantin">Area Umum</option>
+                                </select>
+                                {errors.lokasiKejadian && (
+                                    <div className="invalid-feedback">
+                                        {errors.lokasiKejadian}
                                     </div>
                                 )}
                             </div>
