@@ -33,6 +33,7 @@ function TicketForm() {
     const titleRef = useRef();
     const descriptionRef = useRef();
     const dateRef = useRef();
+    const lokasiRef= useRef();
 
     // ===================================
     // MENGAMBIL DATA KATEGORI
@@ -63,7 +64,7 @@ function TicketForm() {
             case 'name':
                 if (!value.trim()) {
                     message = 'Nama pelapor harus diisi.';
-                } else if (value.trim().length < 3) {
+                } else if (value.trim().length < 3) {   
                     message = 'Nama minimal terdiri dari 3 karakter.';
                 }
                 break;
@@ -208,6 +209,8 @@ function TicketForm() {
             descriptionRef.current?.focus();
         } else if (validationErrors.incidentDate) {
             dateRef.current?.focus();
+        } else if (validationErrors.lokasiKejadian) {
+            lokasiRef.current?.focus();
         }
     };
 
@@ -225,7 +228,6 @@ function TicketForm() {
         // Validasi langsung ketika input berubah
         validateField(name, value);
     };
-
     // ===================================
     // HANDLE SUBMIT FORM
     // ===================================
