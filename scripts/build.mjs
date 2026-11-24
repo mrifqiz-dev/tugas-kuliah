@@ -13,6 +13,25 @@ const apps = [
   'diskon-palindrom',
 ].map((app) => join(framework, app))
 apps.push(join('TRPL_PBF_M5_P1_069', 'helpdesk-app'))
+apps.push(...[
+  'template-terakhir',
+  'template-uts-bootstrap',
+  'template-uts-bootstrap2',
+  'template-uts-bootstrap3',
+  'template-uts-no-bootstrap1',
+].map((app) => join('UTS-069', app)))
+
+// CONTOH: jika aplikasi React/Vite ada di folder labpinjam/ pada root repository.
+// Aktifkan baris berikut setelah labpinjam/package.json dan package-lock.json tersedia:
+// apps.push('labpinjam')
+//
+// Di labpinjam/vite.config.js, tambahkan base ke defineConfig yang sudah ada:
+// export default defineConfig({
+//   base: './',
+//   plugins: [react()], // Pertahankan plugin asli aplikasi.
+// })
+// Pastikan script "build" di labpinjam/package.json menjalankan "vite build".
+// Hasil build akan disalin otomatis ke dist/labpinjam/dist/.
 
 // npm supplies its CLI path on both Windows and Linux; no shell quoting needed.
 function npm(args, cwd) {

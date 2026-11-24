@@ -73,7 +73,8 @@ if (preview) {
     return body
   }
   function links(html) {
-    return [...html.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["']/gi)].map((match) => match[1])
+    const activeHtml = html.replace(/<!--[\s\S]*?-->/g, '')
+    return [...activeHtml.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["']/gi)].map((match) => match[1])
   }
   async function checkFiles(directory, urlPath) {
     for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -92,6 +93,18 @@ if (preview) {
       console.log(`PASS /${link}`)
     }
     const framework = await check(frameworkPath)
+    const utsApps = [
+      'template-terakhir', 'template-uts-bootstrap', 'template-uts-bootstrap2',
+      'template-uts-bootstrap3', 'template-uts-no-bootstrap1',
+    ]
+    for (const app of utsApps) {
+      const directory = `UTS-069/${app}/dist`
+      assert.ok(links(main).includes(`${directory}/index.html`), `Missing UTS navigation: ${app}`)
+      const html = await check(`/${directory}/index.html`)
+      assert.match(html, /type="module"[^>]*src="\.\/assets\/[^" ]+\.js"/)
+      await checkFiles(join(output, directory), `/${directory}`)
+      console.log(`PASS /${directory}/index.html + built assets`)
+    }
     const helpdeskPath = '/TRPL_PBF_M5_P1_069/helpdesk-app/dist/index.html'
     assert.ok(links(main).includes(helpdeskPath.slice(1)), 'Missing Helpdesk navigation')
     const helpdesk = await check(helpdeskPath)
